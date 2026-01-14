@@ -1,7 +1,7 @@
 # Windows-18
 Simple Operating system based on SaadOS Web Edition .
 
-![Header](Web/images/wallpaper-win18.png)
+<img src="Web/images/wallpaper-win18.png" alt="header" width="450px" />
 
 ## Notice
 Uniofficial operating system not relative with Microsoft.
