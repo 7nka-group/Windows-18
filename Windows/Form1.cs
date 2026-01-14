@@ -28,7 +28,10 @@ namespace Win18
 
             web.Source = new Uri("https://win18.netlify.app");
 
-            // (اختياري) تعطيل أشياء المتصفح
+
+
+
+
             web.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
             web.CoreWebView2.Settings.IsZoomControlEnabled = false;
         }
