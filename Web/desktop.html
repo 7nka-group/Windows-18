@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Windows 18</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    @font-face {
+        font-family: 'dos';
+        src: url(./fonts/dos.ttf);
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: radial-gradient(circle at center, #0e3d7e 0%, #1069d6 100%);
+        font-family: 'dos', monospace;
+        color: #00ffaa;
+        overflow: hidden;
+        cursor: default;
+        user-select: none;
+    }
+
+    #desktop {
+        width: 100%;
+        height: calc(100% - 40px);
+        position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    }
+
+    /* Icons */
+    .icon {
+        position: absolute;
+        top: 60px;
+        left: 60px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform .2s;
+    }
+
+    .icon img {
+        width: 64px;
+        height: 64px;
+        display: block;
+        margin: auto;
+    }
+
+    .icon span {
+        display: block;
+        color: #caffee;
+        margin-top: 6px;
+        font-size: 0.85rem;
+    }
+
+    .icon:hover { transform: scale(1.1); }
+
+    /* Windows */
+    .window {
+        position: absolute;
+        top: 120px;
+        left: 200px;
+        width: 800px;
+        height: 500px;
+        background: #101a15;
+        border: 1px solid #00ffaa55;
+        border-radius: 8px;
+        box-shadow: 0 0 20px #00ffaa22;
+        display: none;
+        flex-direction: column;
+        resize: both;
+        overflow: hidden;
+    }
+
+    .window-header {
+        background: #082219;
+        color: #a0ffd9;
+        padding: 6px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: move;
+        font-size: .9rem;
+        user-select: none;
+    }
+
+    .window-buttons {
+        display: flex;
+        gap: 6px;
+    }
+
+    .window-buttons div {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .close-btn { background: #ff5f56; }
+    .min-btn { background: #ffbd2e; }
+    .max-btn { background: #27c93f; }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        flex: 1;
+        background: #0f1814;
+    }
+
+    #taskbar {
+        width: 100%;
+        height: 40px;
+        background: #04110b;
+        border-top: 1px solid #00ffaa33;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        box-shadow: 0 -2px 10px #00000055;
+    }
+
+    #task-items {
+        display: flex;
+        gap: 8px;
+    }
+
+    .task-icon {
+        padding: 6px 12px;
+        background: #082219;
+        border-radius: 6px;
+        border: 1px solid #00ffaa33;
+        color: #baffee;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    .task-icon:hover { background: #0b2b20; }
+/* Start Button */
+#start-btn {
+    font-family: 'dos', monospace;
+    font-weight: bold;
+    font-size: 1.4rem;
+    width: 40px;
+    height: 28px;
+    background: #082219;
+    color: #00ffaa;
+    border: 1px solid #00ffaa44;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: 0.2s;
+}
+
+#start-btn:hover {
+    background: #0b2b20;
+}
+
+/* Start Menu */
+#start-menu {
+    position: fixed;
+    bottom: 40px;
+    left: 10px;
+    width: 220px;
+    background: #04110b;
+    border: 1px solid #00ffaa44;
+    box-shadow: 0 0 12px #00000066;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 99999;
+}
+
+.start-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: #082219;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 6px;
+    color: #baffee;
+    transition: 0.2s;
+}
+
+.start-item img {
+    width: 22px;
+    height: 22px;
+}
+
+.start-item:hover {
+    background: #0c2e22;
+}
+
+</style>
+
+<script src="scripts/jq.min.js"></script>
+</head>
+
+<body>
+
+<div id="desktop">
+
+    <div class="icon" id="browser-icon" style="top:60px; left:60px;">
+        <img src="images/browser.png">
+        <span>SaadBrowser</span>
+    </div>
+
+    <div class="icon" id="terminal-icon" style="top:60px; left:150px;">
+        <img src="images/terminal.png">
+        <span>Terminal</span>
+    </div>
+
+    <!-- Calculator Icon -->
+    <div class="icon" id="calc-icon" style="top:60px; left:240px;">
+        <img src="images/calc.png">
+        <span>Calculator</span>
+    </div>
+
+    <div class="icon" id="mine-icon" style="top:60px; left:330px;">
+        <img src="images/Minesweeper.png">
+        <span>Minesweeper</span>
+    </div>
+
+    <div class="icon" id="chess-icon" style="top:60px; left:420px;">
+        <img src="images/chess.png">
+        <span>SaadChess</span>
+    </div>
+
+
+    <div class="window" id="browser-window">
+        <div class="window-header">
+            <span>SaadBrowser</span>
+            <div class="window-buttons">
+                <div class="min-btn"></div>
+                <div class="max-btn"></div>
+                <div class="close-btn"></div>
+            </div>
+        </div>
+        <iframe></iframe>
+    </div>
+
+    <div class="window" id="terminal-window">
+        <div class="window-header">
+            <span>Terminal</span>
+            <div class="window-buttons">
+                <div class="min-btn"></div>
+                <div class="max-btn"></div>
+                <div class="close-btn"></div>
+            </div>
+        </div>
+        <iframe src="apps/terminal.html"></iframe>
+    </div>
+
+    <div class="window" id="calc-window">
+        <div class="window-header">
+            <span>Calculator</span>
+            <div class="window-buttons">
+                <div class="min-btn"></div>
+                <div class="max-btn"></div>
+                <div class="close-btn"></div>
+            </div>
+        </div>
+        <iframe src="apps/calc.html"></iframe>
+    </div>
+
+        <div class="window" id="minesweeper-window">
+        <div class="window-header">
+            <span>Minesweeper</span>
+            <div class="window-buttons">
+                <div class="min-btn"></div>
+                <div class="max-btn"></div>
+                <div class="close-btn"></div>
+            </div>
+        </div>
+        <iframe src="apps/minesweeper.html"></iframe>
+    </div>
+
+        <div class="window" id="chess-window">
+        <div class="window-header">
+            <span>SaadChess</span>
+            <div class="window-buttons">
+                <div class="min-btn"></div>
+                <div class="max-btn"></div>
+                <div class="close-btn"></div>
+            </div>
+        </div>
+        <iframe></iframe>
+    </div>
+
+
+    <!-- File Manager Window -->
+<div class="window" id="files-window">
+    <div class="window-header">
+        <span>File Manager</span>
+        <div class="window-buttons">
+            <div class="min-btn"></div>
+            <div class="max-btn"></div>
+            <div class="close-btn"></div>
+        </div>
+    </div>
+
+    <div id="files-area" style="padding: 10px; overflow-y: auto; color:#baffee; font-size:1rem;">
+        Loading wallpapers...
+    </div>
+</div>
+
+<!-- File Manager Icon -->
+<div class="icon" id="files-icon" style="top:60px; left:510px;">
+    <img src="images/folder.webp">
+    <span>Wallpapers</span>
+</div>
+
+
+
+</div>
+
+<div id="taskbar">
+    <button id="start-btn">S</button>
+<div id="start-menu">
+    <div class="start-item" data-app="browser">
+        <img src="images/browser.png"> SaadBrowser
+    </div>
+    <div class="start-item" data-app="terminal">
+        <img src="images/terminal.png"> Terminal
+    </div>
+    <div class="start-item" data-app="calc">
+        <img src="images/calc.png"> Calculator
+    </div>
+        <div class="start-item" data-app="minesweeper">
+        <img src="images/Minesweeper.png"> Minesweeper
+    </div>
+        <div class="start-item" data-app="SaadChess">
+        <img src="images/chess.png"> SaadChess
+        </div>
+</div>
+
+
+    <div id="task-items"></div>
+</div>
+
+<script src="desktop.js"></script>
+
+</body>
+</html>

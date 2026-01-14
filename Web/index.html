@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Windows 18</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: monospace;
+        background: radial-gradient(circle at center, #04110b 0%, #010805 100%);
+        color: #00ffaa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        text-align: center;
+        border: 1px solid #00ffaa44;
+        padding: 40px 50px;
+        border-radius: 12px;
+        box-shadow: 0 0 25px #00ffaa22;
+        background: #06150f;
+    }
+
+    h1 {
+        margin: 0 0 20px 0;
+        font-size: 2rem;
+    }
+
+    p {
+        margin-bottom: 30px;
+        color: #baffee;
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px 24px;
+        background: #082219;
+        color: #00ffaa;
+        border: 1px solid #00ffaa55;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #0b2b20;
+        transform: scale(1.05);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Welcome to Windows18</h1>
+    <p>Not related with Microsoft environment , And uniofficial operating system based on web.</p>
+    <button id="goBtn">Click here to Booting</button>
+</div>
+
+<script>
+    document.getElementById("goBtn").onclick = function () {
+        window.location.href = "boot.html";
+    };
+</script>
+
+</body>
+</html>
