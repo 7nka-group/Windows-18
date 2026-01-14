@@ -1,2 +1,17 @@
 # Windows-18
 Simple Operating system based on SaadOS Web Edition .
+
+## Notice
+Uniofficial operating system not relative with Microsoft.
+
+## Download
+From [itch.io]()
+
+### Tech Stack
+- **WEB** : Using HTML/CSS/JS and deployed in this [website](https://win18.netlify.app)
+- **Windows App** : Using C# / Webview2 library to make webapp
+
+## Credits
+- [7nka Group](https://x.com/no_mohanek)
+- [STACKS the NULLS](https://stacksthenulls.netlify.app)
+- [0xSaad](https://github.com/Saad711T)
