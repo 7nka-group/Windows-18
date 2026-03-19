@@ -125,7 +125,7 @@ $(function () {
     });
 
     $("#chess-icon").on("click", function () {
-        openApp("chess", "https://0xsaadcontainer.netlify.app/chess", "SaadChess", "images/chess.png");
+        openApp("chess", "https://0xsaadcontainer.netlify.app/softwares/chess/", "SaadChess", "images/chess.png");
     });
 
 
